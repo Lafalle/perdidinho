@@ -21,19 +21,21 @@ private:
     void leftRotate(Node* node) {
         Node* rightChild = node->right;
         node->right = rightChild->left;
-
+        
         if (rightChild->left != nullptr)
             rightChild->left->parent = node;
-
+            
         rightChild->parent = node->parent;
-
+        
         if (node->parent == nullptr)
             root = rightChild;
+            
         else if (node == node->parent->left)
             node->parent->left = rightChild;
+            
         else
             node->parent->right = rightChild;
-
+            
         rightChild->left = node;
         node->parent = rightChild;
     }
@@ -41,19 +43,21 @@ private:
     void rightRotate(Node* node) {
         Node* leftChild = node->left;
         node->left = leftChild->right;
-
+        
         if (leftChild->right != nullptr)
             leftChild->right->parent = node;
-
+            
         leftChild->parent = node->parent;
-
+        
         if (node->parent == nullptr)
             root = leftChild;
+            
         else if (node == node->parent->left)
             node->parent->left = leftChild;
+            
         else
             node->parent->right = leftChild;
-
+            
         leftChild->right = node;
         node->parent = leftChild;
     }
@@ -62,7 +66,7 @@ private:
         while (node != root && node->parent->color == Color::RED) {
             if (node->parent == node->parent->parent->left) {
                 Node* uncle = node->parent->parent->right;
-
+                
                 if (uncle != nullptr && uncle->color == Color::RED) {
                     node->parent->color = Color::BLACK;
                     uncle->color = Color::BLACK;
@@ -73,14 +77,16 @@ private:
                         node = node->parent;
                         leftRotate(node);
                     }
-
+                    
                     node->parent->color = Color::BLACK;
                     node->parent->parent->color = Color::RED;
                     rightRotate(node->parent->parent);
                 }
-            } else {
+            } 
+            
+            else {
                 Node* uncle = node->parent->parent->left;
-
+                
                 if (uncle != nullptr && uncle->color == Color::RED) {
                     node->parent->color = Color::BLACK;
                     uncle->color = Color::BLACK;
@@ -91,39 +97,41 @@ private:
                         node = node->parent;
                         rightRotate(node);
                     }
-
+                    
                     node->parent->color = Color::BLACK;
                     node->parent->parent->color = Color::RED;
                     leftRotate(node->parent->parent);
                 }
             }
         }
-
+        
         root->color = Color::BLACK;
     }
 
     Node* insertHelper(Node* root, Node* newNode) {
         if (root == nullptr)
             return newNode;
-
+            
         if (newNode->key < root->key) {
             root->left = insertHelper(root->left, newNode);
             root->left->parent = root;
-        } else if (newNode->key > root->key) {
+        } 
+        
+        else if (newNode->key > root->key) {
             root->right = insertHelper(root->right, newNode);
             root->right->parent = root;
         }
-
+        
         return root;
     }
 
     Node* searchHelper(Node* root, int key) {
         if (root == nullptr || root->key == key)
             return root;
-
+            
         if (key < root->key)
             return searchHelper(root->left, key);
-
+            
         return searchHelper(root->right, key);
     }
 
@@ -141,9 +149,9 @@ public:
     void insert(int key) {
         Node* newNode = new Node(key);
         newNode->color = Color::RED;
-
+        
         root = insertHelper(root, newNode);
-
+        
         insertFixup(newNode);
     }
 
@@ -152,8 +160,9 @@ public:
         Node* result = searchHelper(root, key);
         auto endTime = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime);
-        std::cout << "Tempo de busca na Arvore: " << duration.count() << " nanossegundos" << std::endl;
-
+        
+        //std::cout << "Tempo de busca na Arvore: " << duration.count() << " nanossegundos" << std::endl;
+        
         return result;
     }
 
