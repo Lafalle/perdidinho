@@ -8,6 +8,7 @@ int main (){
     std::mt19937 gen(rd());
     // Crie uma distribuição uniforme para gerar números inteiros entre um intervalo
     std::uniform_int_distribution<int> dist(1, 10000);
+    //std::uniform_int_distribution<long> dist2(1, 1000000);
 
     int num = dist(gen);
     HashTable<int> tabela;
@@ -27,7 +28,7 @@ int main (){
     
     startTimeHash = std::chrono::high_resolution_clock::now();
     for (int i = 0; i <= 1000000; i++) {
-        int num = dist(gen);  // Gera um número aleatório usando o gerador e a distribuição
+        long num = dist(gen);  // Gera um número aleatório usando o gerador e a distribuição
         
         if (tabela.contains(num)) {
             //std::cout << "A tabela contem o número " << num << std::endl;
@@ -53,11 +54,10 @@ int main (){
     
     
     startTimeTree = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i >= 1000000; i++) {
-        std::uniform_int_distribution<int> dist(1, 10000000);
-        int num = dist(gen);  // Gera um número aleatório usando o gerador e a distribuição
+    for (int i = 0; i <= 1000000; i++) {
+        int num = dist2(gen);  // Gera um número aleatório usando o gerador e a distribuição
         
-        if (arvore.search(i)) {
+        if (arvore.search(num)) {
             //std::cout << "A árvore contem o número " << num << std::endl;
         }
         
