@@ -22,7 +22,7 @@ int main (){
     }
     auto endTimeHash = std::chrono::high_resolution_clock::now();
     auto durationHash = std::chrono::duration_cast<std::chrono::nanoseconds>(endTimeHash - startTimeHash);
-    std::cout << "\nTempo de inserção (de 1000000 itens) na Hash: " << durationHash.count() << " nanossegundos\n" << std::endl;
+    std::cout << "Tempo de inserção (de 1000000 itens) na Hash: " << durationHash.count() << " nanossegundos" << std::endl;
     
     
     startTimeHash = std::chrono::high_resolution_clock::now();
@@ -39,7 +39,7 @@ int main (){
     }
     endTimeHash = std::chrono::high_resolution_clock::now();
     durationHash = std::chrono::duration_cast<std::chrono::nanoseconds>(endTimeHash - startTimeHash);
-    std::cout << "\nTempo de busca (por 1000000 itens) na Hash: " << durationHash.count() << " nanossegundos\n" << std::endl;
+    std::cout << "Tempo de busca (por 1000000 itens) na Hash: " << durationHash.count() << " nanossegundos" << std::endl;
     
     
     auto startTimeTree = std::chrono::high_resolution_clock::now();
@@ -49,7 +49,7 @@ int main (){
     }
     auto endTimeTree = std::chrono::high_resolution_clock::now();
     auto durationTree = std::chrono::duration_cast<std::chrono::nanoseconds>(endTimeTree - startTimeTree);
-    std::cout << "\nTempo de inserção (de 1000000 itens) na Árvore: " << durationTree.count() << " nanossegundos\n" << std::endl;
+    std::cout << "Tempo de inserção (de 1000000 itens) na Árvore: " << durationTree.count() << " nanossegundos" << std::endl;
     
     
     startTimeTree = std::chrono::high_resolution_clock::now();
@@ -67,7 +67,7 @@ int main (){
     }
     endTimeTree = std::chrono::high_resolution_clock::now();
     durationTree = std::chrono::duration_cast<std::chrono::nanoseconds>(endTimeTree - startTimeTree);
-    std::cout << "\nTempo de busca (por 1000000 itens) na Árvore: " << durationTree.count() << " nanossegundos\n" << std::endl;
+    std::cout << "Tempo de busca (por 1000000 itens) na Árvore: " << durationTree.count() << " nanossegundos" << std::endl;
 
 
     return 0;
