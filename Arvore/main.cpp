@@ -8,7 +8,7 @@ int main (){
     std::mt19937 gen(rd());
     // Crie uma distribuição uniforme para gerar números inteiros entre um intervalo
     std::uniform_int_distribution<int> dist(1, 10000);
-    //std::uniform_int_distribution<long> dist2(1, 1000000);
+    std::uniform_int_distribution<long> dist2(1, 1000000);
 
     int num = dist(gen);
     HashTable<int> tabela;
